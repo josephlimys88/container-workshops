@@ -1,0 +1,41 @@
+---
+apiVersion : v1
+kind: Namespace
+
+metadata: 
+  name: nwdb
+  labels:
+    version: v1
+---
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: nwdb-config
+  namespace: nwdb
+  
+data:
+  db_password: changeit
+---
+apiVersion: v1
+kind: Secret
+
+metadata:
+  name: nwdb-secret
+  namespace: nwdb
+
+data:
+  db_password: Y2hhbmdlaXQ=
+  #db_password: cm9vdA==
+---
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: nwapp-config
+  namespace: nwdb
+  
+data:
+  db_host: nwdb-svc.nwdb.svc.cluster.local
+  db_user: root
+---
