@@ -187,4 +187,3 @@ spec:
           optional: true
           secretName: istio.default
 status: {}
----
